@@ -1,9 +1,9 @@
 import os
-import psycopg
+import psycopg2
 
 def get_connection():
     url = os.environ['DATABASE_URL']
-    connection = psycopg.connect(url)
+    connection = psycopg2.connect(url)
     return connection
 
 def select_all_books():

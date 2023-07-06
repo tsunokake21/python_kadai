@@ -1,6 +1,6 @@
-from flask import Flask, render_template,request
-import random
-import db
+from flask import Flask, render_template, request, redirect, url_for, session
+import db, string, random
+
 
 app = Flask(__name__)
 
@@ -24,10 +24,6 @@ def sample_list():
 @app.route('/register')
 def sample_register():
     return render_template('register.html')
-    
-@app.route('/search')
-def sample_search():
- return render_template('search.html')
 
 @app.route('/register_exe',methods=['POST'])
 def register_exe():
@@ -36,12 +32,28 @@ def register_exe():
     publisher = request.form.get('publisher')
     pages = request.form.get('pages')
     
-    db.insert_book(title, author,publisher,pages)
+    db.insert_book(title,author,publisher,pages)
     
     book_list = db.select_all_books()
     
-    return render_template('list.html', books=book_list)
-
-
+    return render_template('list.html',books=book_list)
+    
+@app.route('/', methods=['POST'])
+def login():
+    user_name=request.form.get('username')
+    password=request.form.get('password')    
+    
+    if db.login(user_name,password):
+        session['user'] = True
+        return redirect(url_for('mypage'))
+    else:
+        error='ユーザー名またはパスワードが違います'
+        input_data={'user_name':user_name, 'password':password}
+        return render_template('index.html',error=error,data=input_data)
+    
+@app.route('/mypage', methods=['GET'])
+def mypage():
+    return render_template('mypage.html')
+    
 if __name__ == "__main__":
     app.run(debug=True)

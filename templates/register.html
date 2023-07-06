@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h3>ユーザ登録画面</h3>
-    {% if error != null %}
-    <p style="color:red">{{error}}</p>
-    {% endif %}
-    <form action="{{url_for('register_exe')}}" method="post">
-    ユーザー名：<input type="text" name="username"><br>
-    パスワード：<input type="password" name="password"><br>
+{% extends "layout.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='/css/register.css')}}">
+{% endblock %}
+
+{% block content %}
+  <h1>登録</h1>
+  <form action="{{url_for('register_exe')}}" method="post">
+    タイトル：<input type="text" name="title"><br>
+    著者：<input type="text" name="author"><br>
+    出版社：<input type="text" name="publisher"><br>
+    ページ数：<input type="text" name="pages"><br>
     <button type="submit">登録</button>
-    </form>
-    </body>
-    </html>
+  </form>
+{% endblock %}
