@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マイページ</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #90ee90,#90ee90);
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      color: #;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    h3 {
+      color: #;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    .btn-primary {
+      background-color: #ff6a00;
+      border-color: #ff6a00;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #bbbaba;
+      border-color: #bbbaba;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">マイページ</h1>
+    <h3 class="text-center">ようこそ</h3>
+    <div class="d-flex justify-content-center mt-3">
+      <a href="{{url_for('Boo_list')}}" class="btn btn-primary mx-2">図書一覧</a>
+      <a href="{{url_for('serch')}}" class="btn btn-primary mx-2">図書検索</a>
+      <a href="{{url_for('register_book')}}" class="btn btn-primary mx-2">図書登録</a>
+      <a href="{{url_for('kes_bo')}}" class="btn btn-primary mx-2">図書削除</a>
+      <a href="{{url_for('logout')}}" class="btn btn-primary mx-2">ログアウト</a>
+      
+    </div>
+  </div>
+
+
+
+</body>
+</html>

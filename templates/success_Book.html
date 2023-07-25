@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(to right, #90ee90,#90ee90);
+    }
+    h1 {
+      text-align: center;
+    }
+    .center {
+      text-align: center;
+    }
+    h3 {
+      text-align: center;
+    }
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <form></form>
+    <h1 class="mb-4">図書登録</h1>
+    <h3>登録完了</h3>
+    <h2>本の一覧</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>タイトル</th>
+          <th>著者</th>
+          <th>ページ数</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in books %}
+        <tr>
+          <td>{{ book[0] }}</td>
+          <td>{{ book[1] }}</td>
+          <td>{{ book[2] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{{url_for('mypage')}}" class="btn btn-primary mr-2">TOPへ</a>
+    <a href="{{url_for('Boo_list')}}" class="btn btn-primary mr-2">図書一覧へ</a>
+    <a href="{{url_for('register_book')}}" class="btn btn-primary">図書登録へ</a>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
